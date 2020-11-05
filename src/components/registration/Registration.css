@@ -1,0 +1,59 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.registration__container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    width: 45em;
+    height: 50em;
+    border: 0;
+    padding: 20px;
+}
+
+.registration__form {
+    padding: 100px;
+}
+
+.registration__heading {
+    display: flex;
+    align-items: baseline;
+    font-size: 3em;
+}
+
+.registration__heading > em {
+    color: #cc0e74;
+}
+
+.registration__name {
+    width: 500px;
+}
+
+.registration__email {
+    width: 500px;
+}
+
+.registration__password {
+    width: 500px;
+}
+
+.registration__button {
+    align-self: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: deepskyblue;
+}
+
+.registration__footer {
+    font-size: 18px;
+    font-weight: 500;
+}

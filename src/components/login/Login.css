@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+
+.login__container {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5em;
+    width: 45em;
+    height: 50em;
+    border: 0;
+    padding: 20px;
+}
+
+.login__form {
+    padding: 100px;
+}
+
+.login__heading {
+    display: flex;
+    align-items: baseline;
+    font-size: 3em;
+}
+
+.login__heading > em {
+    color: #cc0e74;
+}
+
+.login__email {
+    width: 500px;
+    margin-bottom: 10px;
+}
+
+.login__password {
+    width: 500px;
+
+}
+
+.login__button {
+    align-self: center;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: deepskyblue;
+}
+
+.login__footer {
+    font-size: 18px;
+    font-weight: 500;
+}
