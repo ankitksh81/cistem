@@ -1,9 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Registration.css';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import {Link, useHistory} from 'react-router-dom';
+import {auth} from '../../firebase';
+
 
 const Registration = () => {
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
+    
+    const signUp = () => {
+        var user = auth
+        .createUserWithEmailAndPassword(email, password)
+        .then((authUser) => {
+            return authUser.user.updateProfile({ displayName: name });
+        })
+        .catch((e) => alert(e.message));
+        console.log(user);
+        history.push({
+            pathname:  "/dashboard"
+        });
+    }
 
     return (
         <div className="container">
@@ -24,6 +44,8 @@ const Registration = () => {
                             label="Email"
                             variant="outlined"
                             type="email"
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}
                         />
                     </div>
                     <br />
@@ -34,6 +56,8 @@ const Registration = () => {
                             label="Name"
                             variant="outlined"
                             type="text"
+                            value={name}
+                            onChange={(e)=>setName(e.target.value)}
                         />
                     </div>
                     <br />
@@ -44,15 +68,17 @@ const Registration = () => {
                             label="Password"
                             variant="outlined"
                             type="password"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
                         />
                     </div>
                     <br />
-                    <Button size="large" className="registration__button" variant="contained" color="primary">Register</Button>
+                    <Button size="large" className="registration__button" variant="contained" color="primary" onClick={()=>signUp()}>Register</Button>
                 </form>
 
                 <p className="registration__footer">
                     Already have an account?
-                    <a href="http://www.google.com" target="_self"> Login</a>
+                    <Link to="/login"> Login</Link>
                 </p>
 
             </div>
