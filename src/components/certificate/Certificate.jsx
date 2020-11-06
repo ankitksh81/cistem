@@ -40,23 +40,24 @@ Font.register({ family: "Playfair Display", fonts: [
 ]})
 
 
-const MyDocument = () => (
+const MyDocument = ({cert_title, cert_name, cert_para, cert_position, cert_sign}) => (
   <Document>
     <Page size="Letter" orientation="landscape"	style={styles.page}>
       <View style={styles.title}>
-        <Text style={styles.titleText}>Certificate of Appreciation</Text>
+        <Text style={styles.titleText}>{cert_title}</Text>
       </View>
       <View style={styles.para1}>
         <Text>This is to certify that</Text>
       </View>
       <View style={styles.name}>
-        <Text>Anurag Sharan</Text>
+        <Text>{cert_name}</Text>
       </View>
       <View style={styles.para2}>
-        <Text>has bagged the <Text style={{fontWeight:'bold', fontFamily:"Helvetica-Bold"}}>first position</Text> in REVA Hack 2020, a 3 day hackathon conducted by REVA University</Text>
+        {/* <Text>has bagged the first position in REVA Hack 2020, a 3 day hackathon conducted by REVA University</Text> */}
+        <Text>{cert_para.replace("{position}", cert_position)}</Text>
       </View>
       <View style={styles.signature}>
-        <Text>Signer1</Text>
+        <Text>{cert_sign}</Text>
       </View>
     </Page>
   </Document>
