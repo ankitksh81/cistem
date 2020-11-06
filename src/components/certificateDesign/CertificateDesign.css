@@ -1,8 +1,14 @@
 .design__container {
-    margin-top: 100px;
+    margin-top: 80px;
     text-align: center;
 }
 
 .inner__container {
     display: flex;
+}
+
+.render__space {
+    margin-left: 40px;
+    width: 50vw;
+    height: 80vh;
 }

@@ -11,6 +11,7 @@ import RenderCertificate from './components/renderCertificate/RenderCertificate.
 import Dashboard from './components/dashboard';
 import Homepage from './components/homepage';
 import Navigation from './components/navbars/Navigation.jsx';
+import CertificateDesign from './components/certificateDesign/CertificateDesign';
 function App() {
   const web3 = useRef(null);
   const portis = useRef(null);
@@ -55,7 +56,7 @@ function App() {
         <Web3Context.Provider value={web3.current}>
           <Route exact path='/'>
           {/* todo: replace with homepage component */}
-            <Homepage/>
+            <CertificateDesign />
           </Route>
           <Route exact path='/dashboard'>
           {/* todo: replace with dashboard component */}

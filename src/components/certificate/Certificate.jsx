@@ -40,7 +40,7 @@ Font.register({ family: "Playfair Display", fonts: [
 ]})
 
 
-const MyDocument = ({cert_title, cert_name, cert_para, cert_position, cert_sign}) => (
+const Certificate = ({cert_title, cert_name, cert_para, cert_position, cert_sign}) => (
   <Document>
     <Page size="Letter" orientation="landscape"	style={styles.page}>
       <View style={styles.title}>
@@ -63,4 +63,4 @@ const MyDocument = ({cert_title, cert_name, cert_para, cert_position, cert_sign}
   </Document>
 );
 
-export default MyDocument;
+export default Certificate;
