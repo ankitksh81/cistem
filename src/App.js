@@ -12,6 +12,8 @@ import Dashboard from './components/dashboard';
 import Homepage from './components/homepage';
 import Navigation from './components/navbars/Navigation.jsx';
 import CertificateDesign from './components/certificateDesign/CertificateDesign';
+import IssueCert from './components/issue/IssueCert';
+
 function App() {
   const web3 = useRef(null);
   const portis = useRef(null);
@@ -39,24 +41,18 @@ function App() {
 
   //Initialize web3 and portis
   useEffect(() => {
-    if(portis.current!==null && !portis.current.isLoggedIn()) {
       portis.current = new Portis('380b878f-f415-48f8-b5ef-d0f417d004d3', 'maticTestnet');
       web3.current = new Web3(portis.current.provider);
-      web3.current.eth.getAccounts().then(()=>{
-        setPortisLoggedIn(true);
-      });
-      console.log("Logged in to portis");
-    }
   }, [])
 
   return (
     <div className="App">
       <Router>
         <Navigation user={user} auth={auth}/>
-        <Web3Context.Provider value={web3.current}>
+        <Web3Context.Provider value={[web3.current, portis.current]}>
           <Route exact path='/'>
           {/* todo: replace with homepage component */}
-            <CertificateDesign />
+            <Homepage />
           </Route>
           <Route exact path='/dashboard'>
           {/* todo: replace with dashboard component */}
@@ -71,6 +67,12 @@ function App() {
           </Route>
           <Route exact path='/rendercert'>
             <RenderCertificate />
+          </Route>
+          <Route exact path='/designcert'>
+            {user ? <CertificateDesign user={user}/>:<h1>Please log in</h1>}
+          </Route>
+          <Route exact path='/issuecert'>
+            {user ? <IssueCert user={user}/>:<h1>Please log in</h1>}
           </Route>
         </Web3Context.Provider>
       </Router>

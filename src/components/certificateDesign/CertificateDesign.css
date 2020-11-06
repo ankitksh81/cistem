@@ -1,14 +1,31 @@
 .design__container {
-    margin-top: 80px;
+    margin-top: 70px;
     text-align: center;
+}
+
+h2 {
+    font-size: 40px;
 }
 
 .inner__container {
     display: flex;
+    margin-top: 40px;
+    justify-content: center;
+    align-items: center;
 }
 
 .render__space {
-    margin-left: 40px;
-    width: 50vw;
-    height: 80vh;
+    margin-left: 150px;
+    width: 52vw;
+    height: 70vh;
 }
+
+.input {
+    width: 500px;
+}
+
+.caption {
+    width: 500px;
+    text-align: left;
+}
+
