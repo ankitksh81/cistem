@@ -2,6 +2,7 @@ import React from 'react';
 import './Login.css';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 const Login = () => {
 
@@ -41,7 +42,7 @@ const Login = () => {
 
                 <p className="login__footer">
                     Don't have an account?
-                    <a href="http://www.google.com" target="_self"> Register</a>
+                    <Link to="/signup"> Register</Link>
                 </p>
 
             </div>
