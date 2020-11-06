@@ -2,7 +2,6 @@ import React from 'react';
 import illustraton from './illustration.jpg';
 import './Homepage.css'
 import { Button } from '@material-ui/core';
-import Navigation from '../navbars/Navigation'
 
 function Homepage() {
     return (
