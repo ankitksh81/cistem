@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import './Navigation.css';
 import { makeStyles } from '@material-ui/core/styles';
+import{Link} from 'react-router-dom';
 import {AppBar, Toolbar, Typography, Button, IconButton, Drawer, MenuList, MenuItem } from '@material-ui/core';
 import MenuOutlined from '@material-ui/icons/Menu';
 
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const Navigation = () => {
+const Navigation = ({user, auth}) => {
     const classes = useStyles();
     const [drawerOpen, setDrawerOpen] = useState(false);
     
@@ -37,20 +38,28 @@ const Navigation = () => {
                     <Typography variant="h6" className={classes.title}>
                         CISTEM
                     </Typography>
-                    <Button color="inherit">Login</Button>
+
+                    {user? (
+                        <Button color="inherit" onClick={()=>{auth.signOut()}}>Logout</Button>
+                    ):(   
+                        <Link to="/login" style={{textDecoration: 'none', color:'white'}}>
+                            <Button color="inherit">Login</Button>
+                        </Link>
+                    )}
                 </Toolbar>
             </AppBar>
             <Drawer classes={{ paper: classes.drawer }} open={drawerOpen} onClose={() => setDrawerOpen(false)}>
-
+            {user?(
+                <>
                 <div className="drawer__name">
-                    Profile Name
+                    {user.displayName}
                 </div>
                 <hr/>
 
                 <MenuList className="menu-list">
-                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
-                        Dashboard
-                    </MenuItem>
+                    <Link to="/dashboard" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Dashboard</MenuItem>
+                    </Link>
                     <MenuItem style={{fontSize: 28, marginBottom: 5}}>
                         Design Certificate
                     </MenuItem>
@@ -61,6 +70,18 @@ const Navigation = () => {
                         Verify Certificate
                     </MenuItem>
                 </MenuList>
+                </>
+            ):(
+                <MenuList className="menu-list">
+                    <Link to="/login" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Login</MenuItem>
+                    </Link>
+                    <Link to="/signup" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>SignUp</MenuItem>
+                    </Link>
+                </MenuList>
+            )}
+                
             </Drawer>
         </div>
     )

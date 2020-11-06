@@ -1,10 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Login.css';
 import { TextField } from '@material-ui/core';
 import { Button } from '@material-ui/core';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
+import {auth} from '../../firebase';
 
 const Login = () => {
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
+    const history = useHistory();
+    
+    const signIn = () => {
+        var user = auth
+        .signInWithEmailAndPassword(email, password)
+        .catch((e) => alert(e.message));
+        if(user){
+            history.push({
+                pathname:  "/dashboard"
+            });
+        };
+    };
 
     return (
         <div className="container">
@@ -23,6 +39,8 @@ const Login = () => {
                             id="outlined-required"
                             label="Email"
                             variant="outlined"
+                            value={email}
+                            onChange={(e)=>setEmail(e.target.value)}
                         />
                     </div>
                     <br />
@@ -33,11 +51,13 @@ const Login = () => {
                             label="Password"
                             variant="outlined"
                             type="password"
+                            value={password}
+                            onChange={(e)=>setPassword(e.target.value)}
                         />
                     </div>
                     <br />
 
-                    <Button size="large" className="login__button" variant="contained" color="primary">Login</Button>
+                    <Button size="large" className="login__button" variant="contained" color="primary"  onClick={()=>signIn()}>Login</Button>
                 </form>
 
                 <p className="login__footer">

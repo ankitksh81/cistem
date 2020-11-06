@@ -7,7 +7,6 @@ import Navigation from '../navbars/Navigation'
 function Homepage() {
     return (
         <div className="main__container">
-            <Navigation />
             <div className="container">         
                 <div className="hometext">
                     <h2 className="hero__name">CISTEM</h2>
