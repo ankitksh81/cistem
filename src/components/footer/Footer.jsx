@@ -1,6 +1,7 @@
 import React,{ Component} from 'react';
 import git from './Github.png';
 import "./Footer.css";
+
 function Footer(){
       return (
           <div>

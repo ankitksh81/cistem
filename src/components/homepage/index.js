@@ -2,7 +2,7 @@ import React from 'react';
 import illustraton from './illustration.jpg';
 import './Homepage.css'
 import { Button } from '@material-ui/core';
-import Navigation from '../navbars/Navigation'
+import Footer from '../footer/Footer';
 
 function Homepage() {
     return (
@@ -17,6 +17,7 @@ function Homepage() {
                     <img id="hero__illustration" src={illustraton} alt=""/>
                 </div>
             </div>
+            <Footer />
         </div>
     );
 }

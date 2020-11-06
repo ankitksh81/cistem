@@ -73,6 +73,9 @@ const Navigation = ({user, auth}) => {
                 </>
             ):(
                 <MenuList className="menu-list">
+                    <Link to="/" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Homepage</MenuItem>
+                    </Link>
                     <Link to="/login" style={{textDecoration: 'none', color:'black'}}>
                         <MenuItem style={{fontSize: 28, marginBottom: 5}}>Login</MenuItem>
                     </Link>
