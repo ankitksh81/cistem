@@ -8,7 +8,9 @@ import Registration from './components/registration/Registration.jsx';
 import { auth } from './firebase';
 import {Web3Context} from './Web3Context';
 import RenderCertificate from './components/renderCertificate/RenderCertificate.jsx';
-
+import Dashboard from './components/dashboard';
+import Homepage from './components/homepage';
+import Navigation from './components/navbars/Navigation.jsx';
 function App() {
   const web3 = useRef(null);
   const portis = useRef(null);
@@ -49,14 +51,15 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navigation user={user} auth={auth}/>
         <Web3Context.Provider value={web3.current}>
           <Route exact path='/'>
           {/* todo: replace with homepage component */}
-            <p>Homepage</p>
+            <Homepage/>
           </Route>
           <Route exact path='/dashboard'>
           {/* todo: replace with dashboard component */}
-            {user ? <p>Dashboard</p> : <Redirect to="/login" />}
+            {user ? <Dashboard/> : <Redirect to="/login" />}
           </Route>
           <Route exact path='/login'>
             {user ? <Redirect to="/dashboard" /> : <Login />}
