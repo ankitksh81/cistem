@@ -7,6 +7,7 @@ import Login from './components/login/Login.jsx';
 import Registration from './components/registration/Registration.jsx';
 import { auth } from './firebase';
 import {Web3Context} from './Web3Context';
+import RenderCertificate from './components/renderCertificate/RenderCertificate.jsx';
 
 function App() {
   const web3 = useRef(null);
@@ -63,6 +64,9 @@ function App() {
           </Route>
           <Route exact path='/signup'>
             {user ? <Redirect to="/dashboard" /> : <Registration />}
+          </Route>
+          <Route exact path='/rendercert'>
+            <RenderCertificate />
           </Route>
         </Web3Context.Provider>
       </Router>
