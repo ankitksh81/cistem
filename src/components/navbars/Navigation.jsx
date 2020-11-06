@@ -13,10 +13,13 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     flexGrow: 1,
+    textAlign: "left",
+    fontSize: 32,
+    fontFamily: "Fira Code",
   },
   drawer: {
       width: 300,
-      fontSize: 36, 
+      fontSize: 36,
   },
 }));
 
@@ -45,16 +48,16 @@ const Navigation = () => {
                 <hr/>
 
                 <MenuList className="menu-list">
-                    <MenuItem style={{fontSize: 28}}>
+                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
                         Dashboard
                     </MenuItem>
-                    <MenuItem style={{fontSize: 28}}>
+                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
                         Design Certificate
                     </MenuItem>
-                    <MenuItem style={{fontSize: 28}}>
+                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
                         Issue Certificate
                     </MenuItem>
-                    <MenuItem style={{fontSize: 28}}>
+                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
                         Verify Certificate
                     </MenuItem>
                 </MenuList>

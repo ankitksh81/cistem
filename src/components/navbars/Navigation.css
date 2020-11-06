@@ -1,6 +1,7 @@
 .drawer__name {
-    padding: 60px;
+    padding: 50px;
     text-align: center;
+    font-weight: 600;
 }
 
 hr {
