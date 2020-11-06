@@ -1,5 +1,5 @@
 import React from 'react';
-import { PDFViewer, Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
+import { PDFViewer} from '@react-pdf/renderer';
 import MyDocument from '../certificate/Certificate';
 
 const RenderCertificate = () => {
