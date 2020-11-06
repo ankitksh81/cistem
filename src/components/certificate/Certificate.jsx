@@ -1,23 +1,18 @@
 import React from 'react';
-import { Page, Text, View, Document, StyleSheet, Image, Font } from '@react-pdf/renderer';
+import { Page, Text, View, Document, StyleSheet, Font } from '@react-pdf/renderer';
 import playfair from './PlayfairDisplay-Regular.ttf';
-import { emphasize } from '@material-ui/core';
 
 const styles = StyleSheet.create({
   page: {
-    backgroundColor: 'snow',
     flexDirection: 'column',
+    backgroundColor: '#E4E4E4',
     padding: "50px",
     fontFamily: "Helvetica"
   },
   titleText: {
-    fontSize: "46",
+    fontSize: "40",
     fontFamily: "Playfair Display",
     alignSelf:"center",
-    fontWeight: 'heavy',
-  },
-  line: {
-    alignSelf: 'center',
   },
   para1:{
     marginTop: "100px",
@@ -26,12 +21,18 @@ const styles = StyleSheet.create({
   },
   para2:{
     marginTop: "30px",
-    alignSelf:"center",
+    alignSelf:"center"
   },
   name:{
     fontSize: "30",
     alignSelf:"center"
   },
+  signature:{
+    marginTop:"190px",
+    alignSelf:"flex-end",
+    marginRight:"50px",
+    fontSize: "15"
+  }
 });
 
 Font.register({ family: "Playfair Display", fonts: [
@@ -39,23 +40,24 @@ Font.register({ family: "Playfair Display", fonts: [
 ]})
 
 
-const MyDocument = () => (
+const MyDocument = ({cert_title, cert_name, cert_para, cert_position, cert_sign}) => (
   <Document>
     <Page size="Letter" orientation="landscape"	style={styles.page}>
       <View style={styles.title}>
-        <Text style={styles.titleText}>Certificate of Appreciation</Text>
-      </View>
-      <View style={styles.line}>
-        <Text>*--------------------------------------------------------------------------------------------------*</Text>
+        <Text style={styles.titleText}>{cert_title}</Text>
       </View>
       <View style={styles.para1}>
         <Text>This is to certify that</Text>
       </View>
       <View style={styles.name}>
-        <Text>Anurag Sharan</Text>
+        <Text>{cert_name}</Text>
       </View>
       <View style={styles.para2}>
-        <Text>has bagged the <Text style={{fontWeight:'bold', fontFamily:"Helvetica-Bold"}}>first position</Text> in REVA Hack 2020, a 3 day hackathon conducted by REVA University</Text>
+        {/* <Text>has bagged the first position in REVA Hack 2020, a 3 day hackathon conducted by REVA University</Text> */}
+        <Text>{cert_para.replace("{position}", cert_position)}</Text>
+      </View>
+      <View style={styles.signature}>
+        <Text>{cert_sign}</Text>
       </View>
     </Page>
   </Document>
