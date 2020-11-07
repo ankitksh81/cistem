@@ -1,10 +1,10 @@
 .dashboard__heading {
-    font-size: 2rem;
+    font-size: 3rem;
     font-weight: 500;
 }
 
 .first__heading {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     text-align: left;
     margin-top: 0;
     padding: 5px;
@@ -34,4 +34,60 @@
 
 .first__right {
     width: 60%;
+}
+
+.second__heading {
+    font-size: 1.8rem;
+    text-align: left;
+    margin-top: 0;
+    padding: 5px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.second__heading em {
+    color: #cc0e74;
+}
+
+.second__para {
+    margin-top: 0;
+    margin-left: 6px;
+}
+
+.dashboard__second {
+    margin-top: 30px;
+    display: flex;
+    border: 1px solid black;
+    height: fit-content;
+    padding: 10px;
+}
+
+.second__left {
+    width: 40%;
+}
+
+.second__right {
+    width: 60%;
+}
+
+.dashboard__buttons {
+    margin-left: 60px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.second__about {
+    margin-top: 30px;
+    padding: 10px;
+}
+
+.dashboard__about-h3 {
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.dashboard__h3 {
+    font-size: 20px;
+    font-weight: 400;
 }
