@@ -1,6 +1,7 @@
-import { Button, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, FormControl, InputLabel, MenuItem, TextField, Select } from '@material-ui/core';
 import React, {useContext, useEffect} from 'react';
 import {Web3Context} from '../../Web3Context';
+import { makeStyles } from '@material-ui/core/styles';
 
 import './IssueCert.css';
 //Certificate Design
@@ -8,7 +9,20 @@ import './IssueCert.css';
 //Position (optional)
 //Student Email
 
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 160,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
+
+
 function IssueCert() {
+
+    const classes = useStyles();
 
 /*    const [web3, portis] = useContext(Web3Context);
     useEffect(() => {
@@ -105,17 +119,19 @@ function IssueCert() {
             <h1>Issue Certificate</h1>
             <div className="issue__container">
                 <form autoComplete="off">
-                    <div className="cert__dropdown">
-                        <InputLabel id="cert__design">Certificate Design</InputLabel>
-                        <Select
-                            label="Certificate Design"
-                            labelId="cert__design"
-                            id="cert__design"
-                        >
-                            <MenuItem>Design 1</MenuItem>
-                            <MenuItem>Design 1</MenuItem>
-                            <MenuItem>Design 1</MenuItem>
-                        </Select>
+                    <div className="issue__cert">
+                        <FormControl className={classes.formControl}>
+                            <InputLabel id="cert__design">Certificate Design</InputLabel>
+                            <Select
+                                label="Certificate Design"
+                                labelId="cert__design"
+                                id="cert__design"
+                            >
+                                <MenuItem>Design 1</MenuItem>
+                                <MenuItem>Design 1</MenuItem>
+                                <MenuItem>Design 1</MenuItem>
+                            </Select>
+                        </FormControl>
                     </div>
                     <br />
                     <div>
