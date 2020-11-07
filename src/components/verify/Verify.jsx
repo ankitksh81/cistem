@@ -5,7 +5,7 @@ import './Verify.css';
 const Verify = () => {
     return (
         <div className="container">
-            <Typography variant="h1" className="heading">Verify Certificate</Typography>
+            <Typography variant="h2" className="heading">Verify Certificate</Typography>
         </div>
     )
 }
