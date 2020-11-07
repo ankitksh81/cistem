@@ -142,7 +142,8 @@ function IssueCert({user}) {
     }
     const issueCertificate = () => {
         db.collection("issuedCerts").add({
-                    design_name: selectedDesign
+                    design_name: selectedDesign,
+                    u_id: user.uid
                 })
                 .then(docRef => {
                     setHash(docRef.id);
@@ -150,7 +151,7 @@ function IssueCert({user}) {
                     .then(function(receipt){
                         // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
                         console.log(receipt);
-                        alert("Certificate issued!");
+                        alert(`Certificate issued! URL: http://localhost:3000/rendercert/${docRef.id}`);
                     });
                 })
                 .catch(function(error) {

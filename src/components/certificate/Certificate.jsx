@@ -54,7 +54,7 @@ const Certificate = ({cert_title, cert_name, cert_para, cert_position, cert_sign
       </View>
       <View style={styles.para2}>
         {/* <Text>has bagged the first position in REVA Hack 2020, a 3 day hackathon conducted by REVA University</Text> */}
-        <Text>{cert_para.replace("{position}", cert_position)}</Text>
+        <Text>{cert_para?.replace("{position}", cert_position)}</Text>
       </View>
       <View style={styles.signature}>
         <Text>{cert_sign}</Text>

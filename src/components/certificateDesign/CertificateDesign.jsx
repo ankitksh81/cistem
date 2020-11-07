@@ -6,9 +6,9 @@ import Certificate from '../certificate/Certificate';
 import {db} from '../../firebase';
 
 const CertificateDesign = ({user}) => {
-    const [title, setTitle] = useState("Certificate of Participation");
+    const [title, setTitle] = useState("Certificate of Achievement");
     const [name, setName] = useState("");
-    const [para, setPara] = useState("has secured the {position} in REVA Hack 2020, a 3 day hackathon conducted by REVA University");
+    const [para, setPara] = useState("has secured the {position} in Smart India Hackathon, a 3 day hackathon conducted by REVA University");
     const [position, setPosition] = useState("1st");
     const [signee, setSignee] = useState("Signee Name");
 

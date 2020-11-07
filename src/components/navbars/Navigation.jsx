@@ -35,10 +35,13 @@ const Navigation = ({user, auth}) => {
                     <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu" onClick={() => setDrawerOpen(true)}>
                         <MenuOutlined />
                     </IconButton>
+                    
                     <Typography variant="h6" className={classes.title}>
-                        CISTEM
+                        <Link style={{textDecoration: 'none', color:'white'}} to="/">
+                            CISTEM
+                        </Link>
                     </Typography>
-
+                    
                     {user? (
                         <Button color="inherit" onClick={()=>{auth.signOut()}}>Logout</Button>
                     ):(   
@@ -66,7 +69,7 @@ const Navigation = ({user, auth}) => {
                     <Link to="/issuecert" style={{textDecoration: 'none', color:'black'}}>
                         <MenuItem style={{fontSize: 28, marginBottom: 5}}>Issue Certificate</MenuItem>
                     </Link>
-                    <Link to="/dashboard" style={{textDecoration: 'none', color:'black'}}>
+                    <Link to="/verifycert" style={{textDecoration: 'none', color:'black'}}>
                         <MenuItem style={{fontSize: 28, marginBottom: 5}}>Verify Certificate</MenuItem>
                     </Link>
                 </MenuList>
