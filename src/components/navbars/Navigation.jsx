@@ -60,15 +60,15 @@ const Navigation = ({user, auth}) => {
                     <Link to="/dashboard" style={{textDecoration: 'none', color:'black'}}>
                         <MenuItem style={{fontSize: 28, marginBottom: 5}}>Dashboard</MenuItem>
                     </Link>
-                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
-                        Design Certificate
-                    </MenuItem>
-                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
-                        Issue Certificate
-                    </MenuItem>
-                    <MenuItem style={{fontSize: 28, marginBottom: 5}}>
-                        Verify Certificate
-                    </MenuItem>
+                    <Link to="/designcert" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Design Certificate</MenuItem>
+                    </Link>
+                    <Link to="/issuecert" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Issue Certificate</MenuItem>
+                    </Link>
+                    <Link to="/dashboard" style={{textDecoration: 'none', color:'black'}}>
+                        <MenuItem style={{fontSize: 28, marginBottom: 5}}>Verify Certificate</MenuItem>
+                    </Link>
                 </MenuList>
                 </>
             ):(
