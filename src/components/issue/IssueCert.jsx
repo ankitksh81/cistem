@@ -1,6 +1,7 @@
 import { Button, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Web3Context} from '../../Web3Context';
+import {db} from '../../firebase';
 
 import './IssueCert.css';
 //Certificate Design
@@ -8,9 +9,12 @@ import './IssueCert.css';
 //Position (optional)
 //Student Email
 
-function IssueCert() {
-
-/*    const [web3, portis] = useContext(Web3Context);
+function IssueCert({user}) {
+    const [contract, setContract] = useState(null);
+    const [designs, setDesigns] = useState([]);
+    const [account, setAccount] = useState(null);
+    const [selectedDesign, setSelectedDesign] = useState([]);
+    const [web3, portis] = useContext(Web3Context);
     useEffect(() => {
         const contract_abi= [
             {
@@ -91,13 +95,42 @@ function IssueCert() {
             }
         ];
         const contract_address = "0x1AcD3Eb3928D2d78adE40B38eEFEF13a932Eb879";
-        const accounts = web3.eth.getAccounts()
-        // const CertificateContract = new web3.eth.Contract(contract_abi, contract_address);
-        // CertificateContract.methods.getCertCount().call();
-    })
-*/
-    const issueCertificate = () => {
+        const CertificateContract = new web3.eth.Contract(contract_abi, contract_address);
+        setContract(CertificateContract);
+        web3.eth.getAccounts().then(e => {
+            setAccount(e[0]);
+        });
+    }, []);
 
+    useEffect(() => {
+        fetchDesigns();
+    }, [])
+    
+    const fetchDesigns = () => {
+        // var designList = [];
+        // var designNames = [];
+        db.collection("data").where('uid', '==', user.uid)
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    // console.log(doc.id, " => ", doc.data());
+                    // designList.push(doc.data());
+                    setDesigns(oldArray => [...oldArray, doc.data()]);
+                });
+            })
+            .catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
+    }
+    const issueCertificate = () => {    
+        if(contract && account){
+            // //Method to send certificate
+            // contract.methods.insertCert(web3.utils.fromAscii("Hash"), web3.utils.fromAscii("Anurag"), web3.utils.fromAscii("1st Place"), 1).send({from: account})
+            // .then(function(receipt){
+            //     // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
+            //     console.log(receipt);
+            // });
+        }
     }
 
     return (
@@ -112,9 +145,9 @@ function IssueCert() {
                             labelId="cert__design"
                             id="cert__design"
                         >
-                            <MenuItem>Design 1</MenuItem>
-                            <MenuItem>Design 1</MenuItem>
-                            <MenuItem>Design 1</MenuItem>
+                            {designs.map((design, index) => (
+                                <MenuItem key={index}>{design.design_name}</MenuItem>
+                            ))}
                         </Select>
                     </div>
                     <br />
@@ -147,7 +180,7 @@ function IssueCert() {
                         />
                     </div>
                     <br/>
-                    <Button variant="contained" size="large" color="primary" onClick={()=>issueCertificate()}>Issue</Button>
+                    <Button variant="contained" size="large" color="primary" onClick={()=>issueCertificate()} disabled={contract&&account?false:true}>Issue</Button>
                 </form>
             </div>
         </div>

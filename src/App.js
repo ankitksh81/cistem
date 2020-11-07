@@ -41,7 +41,7 @@ function App() {
 
   //Initialize web3 and portis
   useEffect(() => {
-      portis.current = new Portis('380b878f-f415-48f8-b5ef-d0f417d004d3', 'maticTestnet');
+      portis.current = new Portis('380b878f-f415-48f8-b5ef-d0f417d004d3', 'maticMumbai');
       web3.current = new Web3(portis.current.provider);
   }, [])
 
