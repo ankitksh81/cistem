@@ -1,0 +1,37 @@
+.dashboard__heading {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.first__heading {
+    font-size: 1.6rem;
+    text-align: left;
+    margin-top: 0;
+    padding: 5px;
+    font-weight: 500;
+    margin-bottom: 0;
+}
+
+.first__heading em {
+    color: #cc0e74;
+}
+
+.first__para {
+    margin-top: 0;
+    margin-left: 6px;
+}
+
+.dashboard__first {
+    display: flex;
+    border: 1px solid black;
+    height: fit-content;
+    padding: 10px;
+}
+
+.first__left {
+    width: 40%;
+}
+
+.first__right {
+    width: 60%;
+}
