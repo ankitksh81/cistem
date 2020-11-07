@@ -12,7 +12,7 @@ function Homepage() {
                 <div className="hometext">
                     <h2 className="hero__name">CISTEM</h2>
                     <p>A Free Certificate Issuing and Storage system.</p>
-                    <Link to="/dashboard">
+                    <Link to="/signup">
                         <Button size="large" variant="contained" color="primary">Get Started</Button>
                     </Link>
                 </div>
