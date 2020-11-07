@@ -3,6 +3,7 @@ import illustraton from './illustration.jpg';
 import './Homepage.css'
 import { Button } from '@material-ui/core';
 import Footer from '../footer/Footer';
+import{Link} from 'react-router-dom';
 
 function Homepage() {
     return (
@@ -11,7 +12,9 @@ function Homepage() {
                 <div className="hometext">
                     <h2 className="hero__name">CISTEM</h2>
                     <p>A Free Certificate Issuing and Storage system.</p>
-                    <Button size="large" variant="contained" color="primary">Get Started</Button>
+                    <Link to="/dashboard">
+                        <Button size="large" variant="contained" color="primary">Get Started</Button>
+                    </Link>
                 </div>
                 <div className="home__illus">
                     <img id="hero__illustration" src={illustraton} alt=""/>
