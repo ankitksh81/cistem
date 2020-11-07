@@ -13,6 +13,7 @@ import Homepage from './components/homepage';
 import Navigation from './components/navbars/Navigation.jsx';
 import CertificateDesign from './components/certificateDesign/CertificateDesign';
 import IssueCert from './components/issue/IssueCert';
+import Verify from './components/verify/Verify.jsx';
 
 function App() {
   const web3 = useRef(null);
@@ -65,14 +66,15 @@ function App() {
           <Route exact path='/signup'>
             {user ? <Redirect to="/dashboard" /> : <Registration />}
           </Route>
-          <Route exact path='/rendercert'>
-            <RenderCertificate />
-          </Route>
+          <Route exact path='/rendercert/:hash' component={RenderCertificate} />
           <Route exact path='/designcert'>
             {user ? <CertificateDesign user={user}/>:<h1>Please log in</h1>}
           </Route>
           <Route exact path='/issuecert'>
             {user ? <IssueCert user={user}/>:<h1>Please log in</h1>}
+          </Route>
+          <Route exact path='/verifycert'>
+            <Verify />
           </Route>
         </Web3Context.Provider>
       </Router>
