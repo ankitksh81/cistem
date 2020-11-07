@@ -1,6 +1,7 @@
-import { Button, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
+import { Button, FormControl, InputLabel, MenuItem, Select, TextField } from '@material-ui/core';
 import React, {useContext, useEffect, useState} from 'react';
 import {Web3Context} from '../../Web3Context';
+import { makeStyles } from '@material-ui/core/styles'
 import {db} from '../../firebase';
 
 import './IssueCert.css';
@@ -9,11 +10,24 @@ import './IssueCert.css';
 //Position (optional)
 //Student Email
 
+const useStyles = makeStyles((theme) => ({
+    formControl: {
+      margin: theme.spacing(1),
+      minWidth: 160,
+    },
+    selectEmpty: {
+      marginTop: theme.spacing(2),
+    },
+  }));
+
 function IssueCert({user}) {
+
+    const classes = useStyles();
+
     const [contract, setContract] = useState(null);
     const [designs, setDesigns] = useState([]);
     const [account, setAccount] = useState(null);
-    const [selectedDesign, setSelectedDesign] = useState([]);
+    const [selectedDesign, setSelectedDesign] = useState(null);
     const [web3, portis] = useContext(Web3Context);
     useEffect(() => {
         const contract_abi= [
@@ -139,16 +153,19 @@ function IssueCert({user}) {
             <div className="issue__container">
                 <form autoComplete="off">
                     <div className="cert__dropdown">
-                        <InputLabel id="cert__design">Certificate Design</InputLabel>
-                        <Select
-                            label="Certificate Design"
-                            labelId="cert__design"
-                            id="cert__design"
-                        >
-                            {designs.map((design, index) => (
-                                <MenuItem key={index}>{design.design_name}</MenuItem>
-                            ))}
-                        </Select>
+                        <FormControl className={classes.formControl}>
+                            <InputLabel id="cert__design">Certificate Design</InputLabel>
+                            <Select
+                                labelId="cert__design"
+                                id="cert__design"
+                                value={selectedDesign}
+                                onChange={(e) => setSelectedDesign(e.target.value)}
+                            >
+                                {designs.map((design, index) => (
+                                    <MenuItem key={index} value={design.design_name}>{design.design_name}</MenuItem>
+                                ))}
+                            </Select>
+                        </FormControl>
                     </div>
                     <br />
                     <div>
