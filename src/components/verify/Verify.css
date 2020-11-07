@@ -1,0 +1,18 @@
+.verify__container {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.verify__input {
+    margin-top: 10%;
+}
+
+.hash__input {
+    width: 500px;
+}
+
+.heading {
+    font-weight: 600;
+}
