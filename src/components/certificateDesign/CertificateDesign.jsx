@@ -14,47 +14,38 @@ const CertificateDesign = ({user}) => {
 
     const addCertToDB = () => {
         console.log(user.uid);
+        db.collection("data").add({
+                    uid: user.uid,
+                    design_name: name,
+                    title: title,
+                    para: para,
+                    signee: signee
+                })
+                .then(function() {
+                    console.log("Document successfully written!");
+                    alert("Certificate Design Saved successfully!");
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+    };
 
-        var docRef = db.collection("data").doc(user.uid).collection("certificates").doc(name);
-
-        docRef.get().then(function(doc) {
-            if (doc.exists) {
-                alert("Duplicate Design name!")
-            } else {
-                // doc.data() will be undefined in this case
-                console.log("No such document!");
-                db.collection("data").doc(user.uid).collection("certificates").doc(name).set({
-                title: title,
-                para: para,
-                signee: signee
-            })
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-            }
-        }).catch(function(error) {
-            console.log("Error getting document:", error);
-        });
-
-        if(db.collection("data").doc(user.uid).collection("certificates").doc(name).exists){
-        }
-        else{
-            db.collection("data").doc(user.uid).collection("certificates").doc(name).set({
-                title: title,
-                para: para,
-                signee: signee
-            })
-            .then(function() {
-                console.log("Document successfully written!");
-            })
-            .catch(function(error) {
-                console.error("Error writing document: ", error);
-            });
-        }
-    }
+    //     if(db.collection("data").doc(user.uid).collection("certificates").doc(name).exists){
+    //     }
+    //     else{
+    //         db.collection("data").doc(user.uid).collection("certificates").doc(name).set({
+    //             title: title,
+    //             para: para,
+    //             signee: signee
+    //         })
+    //         .then(function() {
+    //             console.log("Document successfully written!");
+    //         })
+    //         .catch(function(error) {
+    //             console.error("Error writing document: ", error);
+    //         });
+    //     }
+    // }
 
     return (
         <div className="design__container">
