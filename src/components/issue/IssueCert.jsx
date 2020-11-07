@@ -23,12 +23,16 @@ const useStyles = makeStyles((theme) => ({
 function IssueCert({user}) {
 
     const classes = useStyles();
-
+    const [hash, setHash] = useState(null);
     const [contract, setContract] = useState(null);
     const [designs, setDesigns] = useState([]);
     const [account, setAccount] = useState(null);
-    const [selectedDesign, setSelectedDesign] = useState(null);
+    const [selectedDesign, setSelectedDesign] = useState("");
     const [web3, portis] = useContext(Web3Context);
+    const [partName, setPartName] = useState("");
+    const [partPosition, setPartPosition] = useState("");
+    const [partEmail, setPartEmail] = useState("");
+    
     useEffect(() => {
         const contract_abi= [
             {
@@ -136,16 +140,30 @@ function IssueCert({user}) {
                 console.log("Error getting documents: ", error);
             });
     }
-    const issueCertificate = () => {    
-        if(contract && account){
-            // //Method to send certificate
+    const issueCertificate = () => {
+        db.collection("issuedCerts").add({
+                    design_name: selectedDesign
+                })
+                .then(docRef => {
+                    setHash(docRef.id);
+                    contract.methods.insertCert(web3.utils.fromAscii(hash), web3.utils.fromAscii(partName), web3.utils.fromAscii(partPosition), 1).send({from: account})
+                    .then(function(receipt){
+                        // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
+                        console.log(receipt);
+                        alert("Certificate issued!");
+                    });
+                })
+                .catch(function(error) {
+                    console.error("Error writing document: ", error);
+                });
+            //Method to send certificate
             // contract.methods.insertCert(web3.utils.fromAscii("Hash"), web3.utils.fromAscii("Anurag"), web3.utils.fromAscii("1st Place"), 1).send({from: account})
             // .then(function(receipt){
             //     // receipt can also be a new contract instance, when coming from a "contract.deploy({...}).send()"
             //     console.log(receipt);
             // });
         }
-    }
+    
 
     return (
         <div className="issue__outer-container">
@@ -175,6 +193,8 @@ function IssueCert({user}) {
                             variant="outlined"
                             label="Participant's Name"
                             type="text"
+                            value={partName}
+                            onChange={(e)=>{setPartName(e.target.value)}}
                         />
                     </div>
                     <br/>
@@ -184,6 +204,8 @@ function IssueCert({user}) {
                             variant="outlined"
                             label="Position (Optional)"
                             type="text"
+                            value={partPosition}
+                            onChange={(e)=>{setPartPosition(e.target.value)}}
                         />
                     </div>
                     <br/>
@@ -194,6 +216,8 @@ function IssueCert({user}) {
                             variant="outlined"
                             label="Participant's Email id"
                             type="email"
+                            value={partEmail}
+                            onChange={(e)=>{setPartEmail(e.target.value)}}
                         />
                     </div>
                     <br/>
