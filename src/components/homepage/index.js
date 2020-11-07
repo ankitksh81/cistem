@@ -10,7 +10,7 @@ function Homepage() {
             <div className="container">         
                 <div className="hometext">
                     <h2 className="hero__name">CISTEM</h2>
-                    <p>A free Certificate issuing and storing service.</p><br/>
+                    <p>A Free Certificate Issuing and Storage system.</p>
                     <Button size="large" variant="contained" color="primary">Get Started</Button>
                 </div>
                 <div className="home__illus">
